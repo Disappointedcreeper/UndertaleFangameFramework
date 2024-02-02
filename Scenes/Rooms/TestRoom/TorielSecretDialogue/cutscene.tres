@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bhftb7cks66dh"]
+
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/CutsceneResource.cs" id="1_78ie8"]
+[ext_resource type="Resource" uid="uid://b0c1bliobjvg4" path="res://Scenes/Rooms/TestRoom/TorielSecretDialogue/1.tres" id="1_cbwqw"]
+[ext_resource type="Resource" uid="uid://b8k3nc6cdheoh" path="res://Scenes/Rooms/TestRoom/TorielSecretDialogue/2.tres" id="2_6cfgj"]
+[ext_resource type="Resource" uid="uid://p65v30j8m11i" path="res://Scenes/Rooms/TestRoom/TorielSecretDialogue/3.tres" id="3_38n3h"]
+
+[resource]
+script = ExtResource("1_78ie8")
+CutsceneName = "TorielSecretDialogue"
+Actions = [ExtResource("1_cbwqw"), ExtResource("2_6cfgj"), ExtResource("3_38n3h")]

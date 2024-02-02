@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://be2uy4cvmbdvh"]
+
+[ext_resource type="Texture2D" uid="uid://b72jkoof62ham" path="res://Sprites/Talksprites/spr_face_sanschuckle2_0.png" id="1_qy5jg"]
+[ext_resource type="FontFile" uid="uid://ln2nmdk623b5" path="res://Fonts/ComicSans.ttf" id="2_08em4"]
+[ext_resource type="AudioStream" uid="uid://dyc5c3hwruimd" path="res://SFX/snd_txtsans.wav" id="3_7i4dp"]
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="4_0yueo"]
+
+[resource]
+script = ExtResource("4_0yueo")
+dialogue = "*what am i doing here?"
+FaceSprite = ExtResource("1_qy5jg")
+TextSound = ExtResource("3_7i4dp")
+Font = ExtResource("2_08em4")

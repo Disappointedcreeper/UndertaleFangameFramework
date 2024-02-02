@@ -1,0 +1,195 @@
+[gd_scene load_steps=15 format=3 uid="uid://dr0037yccoh76"]
+
+[ext_resource type="Script" path="res://Scripts/mainChara.cs" id="1_7i0xj"]
+[ext_resource type="Script" path="res://Scripts/CharaController.cs" id="2_terdc"]
+[ext_resource type="Texture2D" uid="uid://doysxl81gs35v" path="res://Sprites/spr_f_mainchara-sheet.png" id="3_7xe01"]
+[ext_resource type="PackedScene" uid="uid://cxlfe1hdj0wxk" path="res://Scenes/Prefabs/TextBox.tscn" id="3_cmi1c"]
+
+[sub_resource type="Animation" id="Animation_tire8"]
+resource_name = "idledown"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2p1vk"]
+resource_name = "idleleft"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_g2vr6"]
+resource_name = "idleright"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_86c04"]
+resource_name = "idleup"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_256yh"]
+resource_name = "walkdown"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_t224l"]
+resource_name = "walkleft"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_yhawn"]
+resource_name = "walkright"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_2563q"]
+resource_name = "walkup"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprFMainchara-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ftlu"]
+_data = {
+"idledown": SubResource("Animation_tire8"),
+"idleleft": SubResource("Animation_2p1vk"),
+"idleright": SubResource("Animation_g2vr6"),
+"idleup": SubResource("Animation_86c04"),
+"walkdown": SubResource("Animation_256yh"),
+"walkleft": SubResource("Animation_t224l"),
+"walkright": SubResource("Animation_yhawn"),
+"walkup": SubResource("Animation_2563q")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc3n5"]
+size = Vector2(19, 7)
+
+[node name="mainChara" type="Node2D" node_paths=PackedStringArray("Camera")]
+y_sort_enabled = true
+script = ExtResource("1_7i0xj")
+Camera = NodePath("mainChara/Camera2D")
+SpeechBox = ExtResource("3_cmi1c")
+
+[node name="mainChara" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animPlayer", "Interaction", "MyScene", "MySceneScript")]
+y_sort_enabled = true
+script = ExtResource("2_terdc")
+MoveSpeed = 100.0
+animPlayer = NodePath("AnimationPlayer")
+Interaction = NodePath("CollisionShape2D/RayCast2D")
+SpeechBox = ExtResource("3_cmi1c")
+MyScene = NodePath("..")
+MySceneScript = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mainChara"]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_2ftlu")
+}
+
+[node name="SprFMainchara-sheet" type="Sprite2D" parent="mainChara"]
+y_sort_enabled = true
+texture = ExtResource("3_7xe01")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainChara"]
+y_sort_enabled = true
+position = Vector2(-0.5, 11.5)
+shape = SubResource("RectangleShape2D_tc3n5")
+
+[node name="RayCast2D" type="RayCast2D" parent="mainChara/CollisionShape2D"]
+target_position = Vector2(0, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Camera2D" type="Camera2D" parent="mainChara"]
+zoom = Vector2(2.1, 2.1)

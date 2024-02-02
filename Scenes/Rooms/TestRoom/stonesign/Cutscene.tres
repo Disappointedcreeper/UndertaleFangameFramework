@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://1simtrl0sfq4"]
+
+[ext_resource type="Resource" uid="uid://nfqo5kb2w0n3" path="res://Scenes/Rooms/TestRoom/stonesign/1.tres" id="1_5c20h"]
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/CutsceneResource.cs" id="1_cku5a"]
+
+[resource]
+script = ExtResource("1_cku5a")
+CutsceneName = "StoneSign"
+Actions = [ExtResource("1_5c20h")]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://nfqo5kb2w0n3"]
+
+[ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="1_oxww6"]
+[ext_resource type="AudioStream" uid="uid://bqt7lbf5fs3le" path="res://SFX/SND_TXT1.wav" id="2_imawg"]
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="3_252wq"]
+
+[resource]
+script = ExtResource("3_252wq")
+dialogue = "*Stay on the path"
+TextSound = ExtResource("2_imawg")
+Font = ExtResource("1_oxww6")
