@@ -28,6 +28,7 @@ public partial class mainChara : Node2D
 
 	public async void RunCutscene(CutsceneResource Resource)
 	{
+		GetNode("mainChara").Set("Enabled", false);
 		for(int i = 0; i < Resource.Actions.Length; i++)
 		{
 			if(Resource.Actions[i] is DialogueResource)
@@ -40,17 +41,22 @@ public partial class mainChara : Node2D
 				CutsceneAnimation Animation = Resource.Actions[i] as CutsceneAnimation;
 				PlayAnimation(Animation);
 			}
+			else if(Resource.Actions[i] is CutsceneMovement)
+			{
+				CutsceneMovement Movement = Resource.Actions[i] as CutsceneMovement;
+				await Move(Movement);
+			}
 			else
 			{
 				GD.PrintErr("Error " + Resource.CutsceneName + " at index " + i + " is of type " + Resource.Actions[i].GetType() + " which is invalid.");
 			}
 		}
+		GetNode("mainChara").Set("Enabled", true);
 		return;
 	}
 	public async Task TextBox(DialogueResource action)
 	{
 		string TrueDialogue = action.dialogue.Replace("\\n", "\n");
-		GD.Print(TrueDialogue);
         Node2D Object = (Node2D)SpeechBox.Instantiate();
 	    Object.Set("WhatToSay", TrueDialogue);
         Object.Set("FaceSprite", action.FaceSprite);
@@ -68,8 +74,22 @@ public partial class mainChara : Node2D
 
 	public IEnumerator PlayAnimation(CutsceneAnimation action)
 	{
-		action.AnimPlayer.Play(action.AnimationName);
+		AnimationPlayer AnimPlayer = (AnimationPlayer)GetNode("/root").GetNode(action.SceneName).GetNode(action.AnimPlayerPath);
+		AnimPlayer.Play(action.AnimationName);
 		return null;
+	}
+	public async Task Move(CutsceneMovement action)
+	{
+		Node2D Node = (Node2D)GetNode("/root").GetNode(action.SceneName).GetNode(action.NodePlayerPath);
+		Vector2 direction = (action.TargetPos - Node.Position).Normalized();
+		float distance = (action.TargetPos - Node.Position).Length();
+		while(Node.Position.DistanceTo(action.TargetPos) > 1f)
+		{
+			Node.Position += direction * action.MoveSpeed;
+			await ToSignal(GetTree().CreateTimer(0.001), "timeout");
+		}
+		Node.Position = action.TargetPos;
+		return;
 	}
     
 }

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b53mw3ycfcspw"]
+
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/CutsceneAnimation.cs" id="1_cd3xi"]
+
+[resource]
+script = ExtResource("1_cd3xi")
+SceneName = "TestRoom"
+AnimPlayerPath = "Toriel/Sprite2D/AnimationPlayer"
+AnimationName = "idledown"

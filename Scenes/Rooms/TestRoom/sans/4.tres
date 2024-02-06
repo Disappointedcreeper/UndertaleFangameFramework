@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_faamv")
-AnimPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","root_node":NodePath(".."),"autoplay":"","reset_on_save":true,"playback_process_mode":1,"playback_default_blend_time":0.0,"speed_scale":1.0,"method_call_mode":0,"audio_max_polyphony":32,"movie_quit_on_finish":false,"libraries":{
-"": null
-},"blend_times":[],"script":null)
-
+SceneName = "TestRoom"
+AnimPlayerPath = "Toriel/Sprite2D/AnimationPlayer"
 AnimationName = "walkleft"

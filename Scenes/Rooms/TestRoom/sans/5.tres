@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://df48f17awti2g"]
+
+[ext_resource type="Script" path="res://Scripts/Custom Resoruces/CutsceneMovement.cs" id="1_ssjt5"]
+
+[resource]
+script = ExtResource("1_ssjt5")
+SceneName = "TestRoom"
+NodePlayerPath = "Toriel"
+TargetPos = Vector2(60.5, -68)
+MoveSpeed = 1.0

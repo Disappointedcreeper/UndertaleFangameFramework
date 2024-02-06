@@ -32,15 +32,6 @@ public partial class CharaController : CharacterBody2D
 			}
 			
 		}
-		//Disable the player if there is a dialogue box
-		if(MyScene.GetNodeOrNull("SpeechBox") != null)
-		{
-			Enabled = false;
-		}
-		else
-		{
-			Enabled = true;
-		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

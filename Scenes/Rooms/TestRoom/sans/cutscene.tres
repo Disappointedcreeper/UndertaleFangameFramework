@@ -1,12 +1,16 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cky3mkx2quc2i"]
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://cky3mkx2quc2i"]
 
 [ext_resource type="Script" path="res://Scripts/Custom Resoruces/CutsceneResource.cs" id="1_umtu5"]
 [ext_resource type="Resource" uid="uid://kgb8gafuectb" path="res://Scenes/Rooms/TestRoom/sans/1.tres" id="1_ykqjx"]
 [ext_resource type="Resource" uid="uid://be2uy4cvmbdvh" path="res://Scenes/Rooms/TestRoom/sans/2.tres" id="2_s3e8l"]
 [ext_resource type="Resource" uid="uid://bhkdc5mxkh5lo" path="res://Scenes/Rooms/TestRoom/sans/3.tres" id="3_j2m35"]
 [ext_resource type="Resource" uid="uid://8plhrfq267ee" path="res://Scenes/Rooms/TestRoom/sans/4.tres" id="4_cckgj"]
+[ext_resource type="Resource" uid="uid://df48f17awti2g" path="res://Scenes/Rooms/TestRoom/sans/5.tres" id="5_78mjm"]
+[ext_resource type="Resource" uid="uid://buj6yfwasd8an" path="res://Scenes/Rooms/TestRoom/sans/6.tres" id="6_8d2pg"]
+[ext_resource type="Resource" uid="uid://dm84a6te157dx" path="res://Scenes/Rooms/TestRoom/sans/7.tres" id="7_lkwt6"]
+[ext_resource type="Resource" uid="uid://b53mw3ycfcspw" path="res://Scenes/Rooms/TestRoom/sans/8.tres" id="8_xyp27"]
 
 [resource]
 script = ExtResource("1_umtu5")
 CutsceneName = "sans"
-Actions = [ExtResource("1_ykqjx"), ExtResource("2_s3e8l"), ExtResource("3_j2m35"), ExtResource("4_cckgj")]
+Actions = [ExtResource("1_ykqjx"), ExtResource("2_s3e8l"), ExtResource("3_j2m35"), ExtResource("4_cckgj"), ExtResource("5_78mjm"), ExtResource("6_8d2pg"), ExtResource("7_lkwt6"), ExtResource("8_xyp27")]

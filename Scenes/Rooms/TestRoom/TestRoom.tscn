@@ -140,7 +140,7 @@ debug_color = Color(1, 1, 0, 0.419608)
 
 [node name="Toriel" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(119, -68)
+position = Vector2(224, -68)
 
 [node name="Toriel" type="CharacterBody2D" parent="Toriel"]
 y_sort_enabled = true
