@@ -11,6 +11,7 @@ public partial class mainChara : Node2D
 	[Export] public int CameraLimitRight = 152;
 	[Export] public int CameraLimitBottom = 114;
 	[Export] public PackedScene SpeechBox;
+	[Export] public PackedScene SpeechBoxLower;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -56,15 +57,33 @@ public partial class mainChara : Node2D
 	}
 	public async Task TextBox(DialogueResource action)
 	{
+		Node2D MainChara = (Node2D)GetNode("mainChara");
 		string TrueDialogue = action.dialogue.Replace("\\n", "\n");
-        Node2D Object = (Node2D)SpeechBox.Instantiate();
-	    Object.Set("WhatToSay", TrueDialogue);
-        Object.Set("FaceSprite", action.FaceSprite);
-	    Object.Set("FaceSprite2", action.FaceSprite2);
-    	Object.Set("TextSound", action.TextSound);
-        Object.Set("Font", action.Font);
-	    Object.Name = "SpeechBox";
-        AddChild(Object);
+		Vector2 CameraTransform = Camera.GetViewportTransform().Y;
+		if(MainChara.GlobalPosition.Y - CameraTransform.Y < 0)
+		{
+			GD.Print("Test");
+			Node2D Object = (Node2D)SpeechBoxLower.Instantiate();
+	    	Object.Set("WhatToSay", TrueDialogue);
+        	Object.Set("FaceSprite", action.FaceSprite);
+	    	Object.Set("FaceSprite2", action.FaceSprite2);
+    		Object.Set("TextSound", action.TextSound);
+        	Object.Set("Font", action.Font);
+	    	Object.Name = "SpeechBox";
+        	AddChild(Object);
+		}
+		else
+		{
+			Node2D Object = (Node2D)SpeechBox.Instantiate();
+		    Object.Set("WhatToSay", TrueDialogue);
+    	    Object.Set("FaceSprite", action.FaceSprite);
+	    	Object.Set("FaceSprite2", action.FaceSprite2);
+	    	Object.Set("TextSound", action.TextSound);
+    	    Object.Set("Font", action.Font);
+	    	Object.Name = "SpeechBox";
+        	AddChild(Object);
+		}
+        
     	while (GetNodeOrNull("SpeechBox") != null)
     	{
         	await ToSignal(GetTree().CreateTimer(0.001), "timeout");

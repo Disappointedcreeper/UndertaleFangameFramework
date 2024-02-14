@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbkvao7imhbhi"]
+
+[ext_resource type="Texture2D" uid="uid://dxhtjskw577s8" path="res://Black.png" id="1_yba1u"]
+[ext_resource type="Texture2D" uid="uid://bop70awj3mt6l" path="res://White.png" id="2_iww7a"]
+[ext_resource type="Texture2D" uid="uid://h8ewsk0p6k0a" path="res://Sprites/Battle/spr_battlebg_0.png" id="3_r6f5s"]
+[ext_resource type="Texture2D" uid="uid://xipkqxuklib8" path="res://Sprites/Battle/spr_fightbt.png" id="4_gcjin"]
+[ext_resource type="Texture2D" uid="uid://dnv8h50pcmls3" path="res://Sprites/Battle/spr_actbt.png" id="5_vjw8w"]
+[ext_resource type="Texture2D" uid="uid://bds07s5av1ka7" path="res://Sprites/Battle/spr_itembt.png" id="6_vceuy"]
+[ext_resource type="Texture2D" uid="uid://mih3s45xkvjp" path="res://Sprites/Battle/spr_sparebt.png" id="7_deh0g"]
+[ext_resource type="Texture2D" uid="uid://cst2kep6r4jg7" path="res://Sprites/Battle/spr_froggit_2.png" id="8_nrmou"]
+[ext_resource type="AudioStream" uid="uid://djmlqkcbetpw1" path="res://music/9 - Enemy Approaching.ogg" id="9_ff4o1"]
+[ext_resource type="Script" path="res://Scripts/loopmusic.cs" id="10_auw3v"]
+[ext_resource type="Texture2D" uid="uid://bpraoko5oor3g" path="res://Sprites/Battle/spr_heart_battle.png" id="11_0e0oj"]
+[ext_resource type="Script" path="res://Scripts/battlemovement.cs" id="11_ser7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag1sl"]
+size = Vector2(8, 8)
+
+[node name="battle" type="Node2D"]
+
+[node name="Black" type="Sprite2D" parent="."]
+scale = Vector2(350, 250)
+texture = ExtResource("1_yba1u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.1, 2.1)
+
+[node name="BattleBox" type="Node2D" parent="."]
+position = Vector2(0, 46)
+scale = Vector2(279.888, 68.544)
+
+[node name="BattleBoxBlack" type="Sprite2D" parent="BattleBox"]
+z_index = 1
+texture = ExtResource("1_yba1u")
+
+[node name="BattleBoxWhite" type="Sprite2D" parent="BattleBox"]
+scale = Vector2(1.02041, 1.08333)
+texture = ExtResource("2_iww7a")
+
+[node name="SprBattlebg0" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r6f5s")
+
+[node name="SprFroggit2" type="Sprite2D" parent="."]
+position = Vector2(-2, -29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_nrmou")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ff4o1")
+volume_db = 1.0
+script = ExtResource("10_auw3v")
+
+[node name="soul" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ButtonSprites")]
+position = Vector2(-134, 96)
+script = ExtResource("11_ser7a")
+ButtonSprites = [NodePath("../buttons/SprFightbt0"), NodePath("../buttons/SprActbtCenter0"), NodePath("../buttons/SprItembt0"), NodePath("../buttons/SprSparebt0")]
+
+[node name="SprHeartBattle" type="Sprite2D" parent="soul"]
+z_index = 100
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_0e0oj")
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="soul"]
+shape = SubResource("RectangleShape2D_ag1sl")
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="SprFightbt0" type="Sprite2D" parent="buttons"]
+position = Vector2(-115, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gcjin")
+vframes = 2
+frame = 1
+
+[node name="SprActbtCenter0" type="Sprite2D" parent="buttons"]
+position = Vector2(-42, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_vjw8w")
+vframes = 2
+
+[node name="SprItembt0" type="Sprite2D" parent="buttons"]
+position = Vector2(42, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_vceuy")
+vframes = 2
+
+[node name="SprSparebt0" type="Sprite2D" parent="buttons"]
+position = Vector2(115, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_deh0g")
+vframes = 2
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="finished"]

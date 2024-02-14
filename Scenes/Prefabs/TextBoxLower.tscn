@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv1j7k6clf5r7"]
+
+[ext_resource type="Script" path="res://Scripts/TextHandler.cs" id="1_kwg4j"]
+[ext_resource type="AudioStream" uid="uid://bqt7lbf5fs3le" path="res://SFX/SND_TXT1.wav" id="2_w0057"]
+[ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="3_vkgo1"]
+[ext_resource type="Texture2D" uid="uid://dxhtjskw577s8" path="res://Black.png" id="4_ulmym"]
+[ext_resource type="Texture2D" uid="uid://bop70awj3mt6l" path="res://White.png" id="5_k442k"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("FaceSpriteDisplay", "TextSoundPlayer", "TextDisplay")]
+scale = Vector2(0.476, 0.476)
+script = ExtResource("1_kwg4j")
+FaceSpriteDisplay = NodePath("Face")
+TextSound = ExtResource("2_w0057")
+TextSoundPlayer = NodePath("AudioStreamPlayer2D")
+Font = ExtResource("3_vkgo1")
+TextDisplay = NodePath("AcuallText")
+
+[node name="TextBoxBlack" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 150.622)
+scale = Vector2(588, 144)
+texture = ExtResource("4_ulmym")
+
+[node name="TextBoxWhite" type="Sprite2D" parent="."]
+position = Vector2(0, 150.622)
+scale = Vector2(600, 156)
+texture = ExtResource("5_k442k")
+
+[node name="AcuallText" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = -148.0
+offset_top = 93.6219
+offset_right = 279.0
+offset_bottom = 207.622
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_vkgo1")
+theme_override_font_sizes/normal_font_size = 32
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Face" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-221, 150.622)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ulmym")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_w0057")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.1, 2.1)
