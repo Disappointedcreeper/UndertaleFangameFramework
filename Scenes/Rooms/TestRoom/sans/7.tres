@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dm84a6te157dx"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://dm84a6te157dx"]
 
 [ext_resource type="Texture2D" uid="uid://dwoi5dv5uo5rf" path="res://Sprites/Talksprites/spr_face_torieltalk_1.png" id="1_aieke"]
+[ext_resource type="Texture2D" uid="uid://c4cgr7dydg6cs" path="res://Sprites/Talksprites/spr_face_torielbody_0.png" id="1_eik7v"]
 [ext_resource type="Texture2D" uid="uid://c1aib0aygb3v6" path="res://Sprites/Talksprites/spr_face_torieltalk_0.png" id="2_wg1wh"]
 [ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="3_kgu7v"]
 [ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="4_psrlw"]
@@ -8,8 +9,9 @@
 
 [resource]
 script = ExtResource("4_psrlw")
-dialogue = "*Hello Sans."
+dialogue = "* Hello Sans."
 FaceSprite = ExtResource("1_aieke")
 FaceSprite2 = ExtResource("2_wg1wh")
+BodySprite = ExtResource("1_eik7v")
 TextSound = ExtResource("4_syi4u")
 Font = ExtResource("3_kgu7v")

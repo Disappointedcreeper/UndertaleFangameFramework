@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 public partial class mainChara : Node2D
 {
 	[Export] public Camera2D Camera;
-	[Export] public int CameraLimitLeft = -152;
-	[Export] public int CameraLimitTop = -114;
-	[Export] public int CameraLimitRight = 152;
-	[Export] public int CameraLimitBottom = 114;
+	[Export] public int CameraLimitLeft = -320;
+	[Export] public int CameraLimitTop = -240;
+	[Export] public int CameraLimitRight = 320;
+	[Export] public int CameraLimitBottom = 240;
 	[Export] public PackedScene SpeechBox;
-	[Export] public PackedScene SpeechBoxLower;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -60,31 +59,34 @@ public partial class mainChara : Node2D
 		Node2D MainChara = (Node2D)GetNode("mainChara");
 		string TrueDialogue = action.dialogue.Replace("\\n", "\n");
 		Vector2 CameraTransform = Camera.GetViewportTransform().Y;
-		if(MainChara.GlobalPosition.Y - CameraTransform.Y < 0)
+		if(MainChara.GlobalPosition.Y - CameraTransform.Y > 0)
 		{
-			GD.Print("Test");
-			Node2D Object = (Node2D)SpeechBoxLower.Instantiate();
+			GD.Print("test");
+			Node2D Object = (Node2D)SpeechBox.Instantiate();
+			Object.Translate(new Vector2(0, -311));
 	    	Object.Set("WhatToSay", TrueDialogue);
         	Object.Set("FaceSprite", action.FaceSprite);
+			Object.Set("BodySprite", action.BodySprite);
 	    	Object.Set("FaceSprite2", action.FaceSprite2);
     		Object.Set("TextSound", action.TextSound);
         	Object.Set("Font", action.Font);
 	    	Object.Name = "SpeechBox";
-        	AddChild(Object);
+        	GetParent().AddChild(Object);
 		}
 		else
 		{
 			Node2D Object = (Node2D)SpeechBox.Instantiate();
 		    Object.Set("WhatToSay", TrueDialogue);
     	    Object.Set("FaceSprite", action.FaceSprite);
+			Object.Set("BodySprite", action.BodySprite);
 	    	Object.Set("FaceSprite2", action.FaceSprite2);
 	    	Object.Set("TextSound", action.TextSound);
     	    Object.Set("Font", action.Font);
 	    	Object.Name = "SpeechBox";
-        	AddChild(Object);
+        	GetParent().AddChild(Object);
 		}
         
-    	while (GetNodeOrNull("SpeechBox") != null)
+    	while (GetParent().GetNodeOrNull("SpeechBox") != null)
     	{
         	await ToSignal(GetTree().CreateTimer(0.001), "timeout");
         }

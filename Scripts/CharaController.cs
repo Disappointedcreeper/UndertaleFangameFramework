@@ -8,10 +8,8 @@ public partial class CharaController : CharacterBody2D
 	[Export] public float MoveSpeed = 5f;
 	[Export] public AnimationPlayer animPlayer;
 	[Export] public RayCast2D Interaction;
-	[Export] public PackedScene SpeechBox;
 	[Export] public Node2D MyScene;
 	[Export] public mainChara MySceneScript;
-	private Node SpeechBoxInstance;
 
 	public string Dir = "down";
 	

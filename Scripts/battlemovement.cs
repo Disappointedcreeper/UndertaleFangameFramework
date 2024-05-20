@@ -14,6 +14,8 @@ public partial class battlemovement : CharacterBody2D
 	// Mercy button pos: 96, 96
 	public string[] Button = new string[4];
 	[Export] public Sprite2D[] ButtonSprites = new Sprite2D[4];
+	[Export] public AudioStreamPlayer2D SqueakSound;
+	[Export] public AudioStreamPlayer2D SelectSound;
 	public Dictionary<string, Godot.Vector2> MenuPos = new Dictionary<string, Godot.Vector2>();
 	public override void _Ready()
 	{
@@ -35,6 +37,7 @@ public partial class battlemovement : CharacterBody2D
 			ButtonSprites[ButtonPos].Frame = 1;
 			if(Input.IsActionJustPressed("MoveRight"))
 			{
+				SqueakSound.Play();
 				ButtonSprites[ButtonPos].Frame = 0;
 				ButtonPos++;
 				if(ButtonPos > 3)
@@ -44,12 +47,17 @@ public partial class battlemovement : CharacterBody2D
 			}
 			if(Input.IsActionJustPressed("MoveLeft"))
 			{
+				SqueakSound.Play();
 				ButtonSprites[ButtonPos].Frame = 0;
 				ButtonPos--;
 				if(ButtonPos < 0)
 				{
 					ButtonPos = 3;
 				}
+			}
+			if(Input.IsActionJustPressed("z"))
+			{
+				SelectSound.Play();
 			}
 			Position = MenuPos[Button[ButtonPos]];
 		}

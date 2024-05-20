@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8dmfnk3vmkwf"]
+
+[ext_resource type="Texture2D" uid="uid://cmvssvlrfd4ps" path="res://Sprites/Battle/monsters/spr_froggit_2.png" id="2_avg46"]
+
+[node name="froggit" type="Node2D"]
+
+[node name="froggit" type="Sprite2D" parent="."]
+position = Vector2(-1, -25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_avg46")

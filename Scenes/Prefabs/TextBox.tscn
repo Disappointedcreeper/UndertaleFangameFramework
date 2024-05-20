@@ -1,48 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxlfe1hdj0wxk"]
+[gd_scene load_steps=8 format=3 uid="uid://cuegac17kg4hs"]
 
-[ext_resource type="Texture2D" uid="uid://bop70awj3mt6l" path="res://White.png" id="1_sr7pu"]
-[ext_resource type="Script" path="res://Scripts/TextHandler.cs" id="1_tlgdc"]
-[ext_resource type="Texture2D" uid="uid://dxhtjskw577s8" path="res://Black.png" id="2_dgmc1"]
-[ext_resource type="AudioStream" uid="uid://bqt7lbf5fs3le" path="res://SFX/SND_TXT1.wav" id="3_ki75g"]
-[ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="4_6c5v3"]
+[ext_resource type="Script" path="res://Scripts/TextHandler.cs" id="1_2eecu"]
+[ext_resource type="AudioStream" uid="uid://bqt7lbf5fs3le" path="res://SFX/SND_TXT1.wav" id="2_kyo2v"]
+[ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="3_bgtth"]
+[ext_resource type="Texture2D" uid="uid://dxhtjskw577s8" path="res://Black.png" id="4_ti002"]
+[ext_resource type="Texture2D" uid="uid://bop70awj3mt6l" path="res://White.png" id="5_fbufv"]
+[ext_resource type="Texture2D" uid="uid://c1aib0aygb3v6" path="res://Sprites/Talksprites/spr_face_torieltalk_0.png" id="6_qdvqr"]
+[ext_resource type="Texture2D" uid="uid://c4cgr7dydg6cs" path="res://Sprites/Talksprites/spr_face_torielbody_0.png" id="7_kaqps"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("FaceSpriteDisplay", "TextSoundPlayer", "TextDisplay")]
-scale = Vector2(0.476, 0.476)
-script = ExtResource("1_tlgdc")
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("FaceSpriteDisplay", "BodySpriteDisplay", "TextSoundPlayer", "TextDisplay")]
+script = ExtResource("1_2eecu")
 FaceSpriteDisplay = NodePath("Face")
-TextSound = ExtResource("3_ki75g")
+BodySpriteDisplay = NodePath("Face/Body")
+TextSound = ExtResource("2_kyo2v")
 TextSoundPlayer = NodePath("AudioStreamPlayer2D")
-Font = ExtResource("4_6c5v3")
+Font = ExtResource("3_bgtth")
 TextDisplay = NodePath("AcuallText")
 
 [node name="TextBoxBlack" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -154)
-scale = Vector2(588, 144)
-texture = ExtResource("2_dgmc1")
+position = Vector2(0, 157)
+scale = Vector2(566, 139.5)
+texture = ExtResource("4_ti002")
 
 [node name="TextBoxWhite" type="Sprite2D" parent="."]
-position = Vector2(0, -154)
-scale = Vector2(600, 156)
-texture = ExtResource("1_sr7pu")
+position = Vector2(0, 157)
+scale = Vector2(578, 150.5)
+texture = ExtResource("5_fbufv")
 
 [node name="AcuallText" type="RichTextLabel" parent="."]
 z_index = 2
 offset_left = -148.0
-offset_top = -211.0
+offset_top = 100.84
 offset_right = 279.0
-offset_bottom = -97.0
+offset_bottom = 214.84
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("4_6c5v3")
+theme_override_fonts/normal_font = ExtResource("3_bgtth")
 theme_override_font_sizes/normal_font_size = 32
 visible_characters = 0
-visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Face" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(-221, -154)
+z_index = 10
+position = Vector2(-219, 144.958)
 scale = Vector2(2, 2)
-texture = ExtResource("2_dgmc1")
+texture = ExtResource("6_qdvqr")
+
+[node name="Body" type="Sprite2D" parent="Face"]
+z_index = 9
+position = Vector2(0, 16)
+texture = ExtResource("7_kaqps")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ki75g")
+stream = ExtResource("2_kyo2v")
+
+[node name="Camera2D" type="Camera2D" parent="."]

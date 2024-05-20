@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("4_2kthx")
-dialogue = "*it's me sans."
+dialogue = "* it's me sans."
 FaceSprite = ExtResource("1_461q5")
 TextSound = ExtResource("3_06ah4")
 Font = ExtResource("2_vw0ih")

@@ -1,15 +1,17 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://p65v30j8m11i"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://p65v30j8m11i"]
 
 [ext_resource type="Texture2D" uid="uid://cwsepo5libpvg" path="res://Sprites/Talksprites/spr_face_toriel_cursed_1.png" id="1_74008"]
 [ext_resource type="Texture2D" uid="uid://ddpio4bvb88w0" path="res://Sprites/Talksprites/spr_face_toriel_cursed_0.png" id="1_fb5rp"]
+[ext_resource type="Texture2D" uid="uid://c4cgr7dydg6cs" path="res://Sprites/Talksprites/spr_face_torielbody_0.png" id="1_xr5mv"]
 [ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="2_hyhjo"]
 [ext_resource type="AudioStream" uid="uid://2dys60l6ngvq" path="res://SFX/snd_txttor3.wav" id="4_4olqf"]
 [ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="4_v4it3"]
 
 [resource]
 script = ExtResource("4_v4it3")
-dialogue = "*D​​​​​​i​​​​​​e​​​."
+dialogue = "* D​​​​​​i​​​​​​e​​​."
 FaceSprite = ExtResource("1_74008")
 FaceSprite2 = ExtResource("1_fb5rp")
+BodySprite = ExtResource("1_xr5mv")
 TextSound = ExtResource("4_4olqf")
 Font = ExtResource("2_hyhjo")

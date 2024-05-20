@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("4_olei4")
-dialogue = "*just visiting an old lady."
+dialogue = "* just visiting an old lady."
 FaceSprite = ExtResource("1_7bjd2")
 TextSound = ExtResource("3_715a3")
 Font = ExtResource("2_gsind")

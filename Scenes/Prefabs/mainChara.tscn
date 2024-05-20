@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dr0037yccoh76"]
+[gd_scene load_steps=16 format=3 uid="uid://dr0037yccoh76"]
 
 [ext_resource type="Script" path="res://Scripts/mainChara.cs" id="1_7i0xj"]
 [ext_resource type="Script" path="res://Scripts/CharaController.cs" id="2_terdc"]
+[ext_resource type="PackedScene" uid="uid://cuegac17kg4hs" path="res://Scenes/Prefabs/TextBox.tscn" id="2_ylm8p"]
 [ext_resource type="Texture2D" uid="uid://doysxl81gs35v" path="res://Sprites/spr_f_mainchara-sheet.png" id="3_7xe01"]
-[ext_resource type="PackedScene" uid="uid://cxlfe1hdj0wxk" path="res://Scenes/Prefabs/TextBox.tscn" id="3_cmi1c"]
+[ext_resource type="PackedScene" uid="uid://cv1j7k6clf5r7" path="res://Scenes/Prefabs/TextBoxHigher.tscn" id="3_jug1w"]
 
 [sub_resource type="Animation" id="Animation_tire8"]
 resource_name = "idledown"
@@ -154,17 +155,18 @@ size = Vector2(19, 7)
 
 [node name="mainChara" type="Node2D" node_paths=PackedStringArray("Camera")]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 script = ExtResource("1_7i0xj")
 Camera = NodePath("mainChara/Camera2D")
-SpeechBox = ExtResource("3_cmi1c")
+SpeechBox = ExtResource("2_ylm8p")
+SpeechBoxHigher = ExtResource("3_jug1w")
 
 [node name="mainChara" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animPlayer", "Interaction", "MyScene", "MySceneScript")]
 y_sort_enabled = true
 script = ExtResource("2_terdc")
-MoveSpeed = 100.0
+MoveSpeed = 200.0
 animPlayer = NodePath("AnimationPlayer")
 Interaction = NodePath("CollisionShape2D/RayCast2D")
-SpeechBox = ExtResource("3_cmi1c")
 MyScene = NodePath("..")
 MySceneScript = NodePath("..")
 
@@ -192,4 +194,3 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Camera2D" type="Camera2D" parent="mainChara"]
-zoom = Vector2(2.1, 2.1)

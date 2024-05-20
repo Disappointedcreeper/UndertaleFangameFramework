@@ -9,7 +9,9 @@ public partial class TextHandler : Node2D
 	[Export] public Texture2D FaceSprite;
 	public bool IsFaceSprite2 = false;
 	[Export] public Texture2D FaceSprite2;
+	[Export] public Texture2D BodySprite;
 	[Export] public Sprite2D FaceSpriteDisplay;
+	[Export] public Sprite2D BodySpriteDisplay;
 	[Export] public AudioStream TextSound;
 	[Export] public AudioStreamPlayer2D TextSoundPlayer;
 	[Export] public Font Font;
@@ -22,6 +24,7 @@ public partial class TextHandler : Node2D
 		TextSoundPlayer.Stream = TextSound;
 		TextDisplay.AddThemeFontOverride("normal_font", Font);
 		FaceSpriteDisplay.Texture = FaceSprite;
+		BodySpriteDisplay.Texture = BodySprite;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

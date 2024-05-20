@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cst2kep6r4jg7"
-path="res://.godot/imported/spr_froggit_2.png-bdba5a2cbfb0cffde204800d48c4500a.ctex"
+uid="uid://c4cgr7dydg6cs"
+path="res://.godot/imported/spr_face_torielbody_0.png-de06be8d383dcbdc2d277d638f2dcc07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Battle/spr_froggit_2.png"
-dest_files=["res://.godot/imported/spr_froggit_2.png-bdba5a2cbfb0cffde204800d48c4500a.ctex"]
+source_file="res://Sprites/Talksprites/spr_face_torielbody_0.png"
+dest_files=["res://.godot/imported/spr_face_torielbody_0.png-de06be8d383dcbdc2d277d638f2dcc07.ctex"]
 
 [params]
 
