@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuegac17kg4hs"]
+[gd_scene load_steps=29 format=3 uid="uid://cuegac17kg4hs"]
 
 [ext_resource type="Script" path="res://Scripts/TextHandler.cs" id="1_2eecu"]
 [ext_resource type="AudioStream" uid="uid://bqt7lbf5fs3le" path="res://SFX/SND_TXT1.wav" id="2_kyo2v"]
@@ -7,9 +7,492 @@
 [ext_resource type="Texture2D" uid="uid://bop70awj3mt6l" path="res://White.png" id="5_fbufv"]
 [ext_resource type="Texture2D" uid="uid://c1aib0aygb3v6" path="res://Sprites/Talksprites/spr_face_torieltalk_0.png" id="6_qdvqr"]
 [ext_resource type="Texture2D" uid="uid://c4cgr7dydg6cs" path="res://Sprites/Talksprites/spr_face_torielbody_0.png" id="7_kaqps"]
+[ext_resource type="Texture2D" uid="uid://dwoi5dv5uo5rf" path="res://Sprites/Talksprites/spr_face_torieltalk_1.png" id="7_q87lt"]
+[ext_resource type="Texture2D" uid="uid://blxcs7c0353rg" path="res://Sprites/Talksprites/spr_face_torielblink_0.png" id="8_jjk6v"]
+[ext_resource type="Texture2D" uid="uid://1ihxaqk4wbt7" path="res://Sprites/Talksprites/spr_face_torielblink_1.png" id="9_g7jwp"]
+[ext_resource type="Texture2D" uid="uid://bhfv5505qhdwf" path="res://Sprites/Talksprites/spr_face_torielblink_2.png" id="10_r12kk"]
+[ext_resource type="Texture2D" uid="uid://v5cohjb0bt2v" path="res://Sprites/Talksprites/torieltalklowquality.png" id="11_nr8qv"]
+[ext_resource type="Texture2D" uid="uid://cwsepo5libpvg" path="res://Sprites/Talksprites/spr_face_toriel_cursed_1.png" id="12_6bvd2"]
+[ext_resource type="Texture2D" uid="uid://ddpio4bvb88w0" path="res://Sprites/Talksprites/spr_face_toriel_cursed_0.png" id="13_bqhcd"]
+[ext_resource type="Texture2D" uid="uid://dlh7b888ousca" path="res://Sprites/Talksprites/spr_face_sans_0.png" id="14_7o0na"]
+[ext_resource type="Texture2D" uid="uid://gmfui2alq0lb" path="res://Sprites/Talksprites/spr_face_sanswink_0.png" id="16_ommfn"]
+[ext_resource type="Texture2D" uid="uid://b72jkoof62ham" path="res://Sprites/Talksprites/spr_face_sanschuckle2_0.png" id="16_wfgey"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("FaceSpriteDisplay", "BodySpriteDisplay", "TextSoundPlayer", "TextDisplay")]
+[sub_resource type="Animation" id="Animation_lbp6s"]
+resource_name = "noTalksprite"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 153.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AcuallText:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(547, 114)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AcuallText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-268, 101)]
+}
+
+[sub_resource type="Animation" id="Animation_sgavw"]
+resource_name = "nullAnim"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 153.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AcuallText:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(427, 114)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AcuallText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-148, 101)]
+}
+
+[sub_resource type="Animation" id="Animation_srw6h"]
+resource_name = "sans_base"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_7o0na")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 153.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_potwj"]
+resource_name = "sans_chuckle2"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_wfgey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 153.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_qbvpg"]
+resource_name = "sans_wink"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_ommfn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 153.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_lwkvo"]
+resource_name = "toriel_base_idle"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_jjk6v"), ExtResource("9_g7jwp"), ExtResource("10_r12kk"), ExtResource("8_jjk6v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 144.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kaqps")]
+}
+
+[sub_resource type="Animation" id="Animation_uqol3"]
+resource_name = "toriel_base_talk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_qdvqr"), ExtResource("7_q87lt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 144.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kaqps")]
+}
+
+[sub_resource type="Animation" id="Animation_l182h"]
+resource_name = "toriel_evil_idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_bqhcd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 144.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kaqps")]
+}
+
+[sub_resource type="Animation" id="Animation_0iefe"]
+resource_name = "toriel_evil_talk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_6bvd2"), ExtResource("13_bqhcd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 144.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kaqps")]
+}
+
+[sub_resource type="Animation" id="Animation_ofiiv"]
+resource_name = "toriel_lowqual"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_nr8qv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-219, 144.958)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kaqps")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkhng"]
+_data = {
+"noTalksprite": SubResource("Animation_lbp6s"),
+"nullAnim": SubResource("Animation_sgavw"),
+"sans_base": SubResource("Animation_srw6h"),
+"sans_chuckle2": SubResource("Animation_potwj"),
+"sans_wink": SubResource("Animation_qbvpg"),
+"toriel_base_idle": SubResource("Animation_lwkvo"),
+"toriel_base_talk": SubResource("Animation_uqol3"),
+"toriel_evil_idle": SubResource("Animation_l182h"),
+"toriel_evil_talk": SubResource("Animation_0iefe"),
+"toriel_lowqual": SubResource("Animation_ofiiv")
+}
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("AnimPlayer", "FaceSpriteDisplay", "BodySpriteDisplay", "TextSoundPlayer", "TextDisplay")]
 script = ExtResource("1_2eecu")
+AnimPlayer = NodePath("AnimationPlayer")
 FaceSpriteDisplay = NodePath("Face")
 BodySpriteDisplay = NodePath("Face/Body")
 TextSound = ExtResource("2_kyo2v")
@@ -31,26 +514,29 @@ texture = ExtResource("5_fbufv")
 [node name="AcuallText" type="RichTextLabel" parent="."]
 z_index = 2
 offset_left = -148.0
-offset_top = 100.84
+offset_top = 101.0
 offset_right = 279.0
-offset_bottom = 214.84
+offset_bottom = 215.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("3_bgtth")
 theme_override_font_sizes/normal_font_size = 32
+text = "* Stay on the path."
 visible_characters = 0
+visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bkhng")
+}
 
 [node name="Face" type="Sprite2D" parent="."]
 z_index = 10
-position = Vector2(-219, 144.958)
+position = Vector2(-219, 153.958)
 scale = Vector2(2, 2)
-texture = ExtResource("6_qdvqr")
 
 [node name="Body" type="Sprite2D" parent="Face"]
 z_index = 9
 position = Vector2(0, 16)
-texture = ExtResource("7_kaqps")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kyo2v")

@@ -4,45 +4,43 @@ using System.Collections;
 
 public partial class CharaController : CharacterBody2D
 {
-	public bool Enabled = true;
-	[Export] public float MoveSpeed = 5f;
-	[Export] public AnimationPlayer animPlayer;
-	[Export] public RayCast2D Interaction;
-	[Export] public Node2D MyScene;
-	[Export] public mainChara MySceneScript;
-
-	public string Dir = "down";
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+	public bool Enabled = true;                   //True if you can move, false if you can't
+	[Export] public float MoveSpeed = 5f;         //How fast you move
+	[Export] public AnimationPlayer animPlayer;   //The animation player that plays the player character's animations
+	[Export] public RayCast2D Interaction;        //The raycast that interacts with objects around you
+	[Export] public Node2D MyScene;               //The scene that this is derived from
+	[Export] public mainChara MySceneScript;      //The script from the scene this is derived from
+	public string Dir = "down";                   //The direction the player is facing
 
 	public override void _Process(double delta)
 	{
 		//Interact with the object in front of the player.
+		//Probably should change this from raycast to something else but that's a problem for futue me
 		if (Input.IsActionJustPressed("z") && Enabled == true)
     	{
 			Node collidingObject = Interaction.GetCollider() as Node;
-			if(true)
+			if(collidingObject != null && (CutsceneResource)collidingObject.Get("cutsceneObject") != null)
 			{
-				MySceneScript.RunCutscene((CutsceneResource)collidingObject.Get("cutsceneObject"));
+				MySceneScript.RunCutscene((CutsceneResource)collidingObject.Get("cutsceneObject"));  //Run the cutscene
 			}
+			//For some reason the code commented out causes a null reference error
+			/*else if((CutsceneResource)collidingObject.Get("cutsceneObject") == null)
+			{
+				GD.PrintErr("Error: \"" + collidingObject.Name + "\" is a cutscene object, but no cutscene is provided.");
+			}*/
 			
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		//Make temporary velocity variable
-		Vector2 velocity = Velocity;
-		//Handle movement imput
-		if (Input.IsActionPressed("MoveRight") && Enabled == true)
+		Vector2 velocity = Velocity;  //Make temporary velocity variable
+		//Movement imput
+		if (Input.IsActionPressed("MoveRight") && Enabled == true) 
     	{
-			Interaction.TargetPosition = new Vector2(15, 0);
-			Dir = "right";
-        	velocity.X = MoveSpeed;
+			Interaction.TargetPosition = new Vector2(15, 0);  //Change the position the interaction ray is pointing
+			Dir = "right";                                    //Change the player's direction
+        	velocity.X = MoveSpeed;                           //Set the player's movement
     	}
 		else if(Input.IsActionPressed("MoveLeft") && Enabled == true)
 		{
@@ -92,7 +90,7 @@ public partial class CharaController : CharacterBody2D
 			MoveAndSlide();
 		}
 	}
-	public void LoadScene(Godot.Vector2 Pos)
+	public void LoadScene(Godot.Vector2 Pos) //Unfinished
 	{
 		GD.Print(Pos);	
 	}

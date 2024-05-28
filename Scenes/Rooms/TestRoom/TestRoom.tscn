@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://5emk4rgu7qvn"]
+[gd_scene load_steps=17 format=3 uid="uid://5emk4rgu7qvn"]
 
 [ext_resource type="TileSet" uid="uid://gpud776lstqh" path="res://Sprites/Tilemaps/ruinstileset.tres" id="1_5t35g"]
 [ext_resource type="PackedScene" uid="uid://dr0037yccoh76" path="res://Scenes/Prefabs/mainChara.tscn" id="2_133h3"]
+[ext_resource type="PackedScene" uid="uid://cuegac17kg4hs" path="res://Scenes/Prefabs/TextBox.tscn" id="2_m7fao"]
 [ext_resource type="Script" path="res://Scripts/CutsceneObject.cs" id="3_ogdjj"]
 [ext_resource type="Resource" uid="uid://1simtrl0sfq4" path="res://Scenes/Rooms/TestRoom/stonesign/Cutscene.tres" id="4_1vrt7"]
 [ext_resource type="Texture2D" uid="uid://dd0hwyrgu7fjh" path="res://Sprites/overworldnpcs/spr_sans-Sheet.png" id="4_n4oea"]
@@ -79,6 +80,7 @@ _data = {
 [node name="TestRoom" type="Node2D"]
 
 [node name="mainChara" parent="." instance=ExtResource("2_133h3")]
+TextBox = ExtResource("2_m7fao")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -100
@@ -179,4 +181,16 @@ cutsceneObject = ExtResource("7_mmmnj")
 y_sort_enabled = true
 position = Vector2(2, 13)
 shape = SubResource("RectangleShape2D_878rj")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="testymebober" type="Area2D" parent="."]
+position = Vector2(-2, -3)
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_ogdjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testymebober"]
+position = Vector2(-27.75, 28.75)
+shape = SubResource("RectangleShape2D_8k78w")
 debug_color = Color(1, 1, 0, 0.419608)

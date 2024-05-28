@@ -1,6 +1,5 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://kgb8gafuectb"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://kgb8gafuectb"]
 
-[ext_resource type="Texture2D" uid="uid://dlh7b888ousca" path="res://Sprites/Talksprites/spr_face_sans_0.png" id="1_461q5"]
 [ext_resource type="FontFile" uid="uid://ln2nmdk623b5" path="res://Fonts/ComicSans.ttf" id="2_vw0ih"]
 [ext_resource type="AudioStream" uid="uid://dyc5c3hwruimd" path="res://SFX/snd_txtsans.wav" id="3_06ah4"]
 [ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="4_2kthx"]
@@ -8,6 +7,6 @@
 [resource]
 script = ExtResource("4_2kthx")
 dialogue = "* it's me sans."
-FaceSprite = ExtResource("1_461q5")
+anim = "sans_base"
 TextSound = ExtResource("3_06ah4")
 Font = ExtResource("2_vw0ih")

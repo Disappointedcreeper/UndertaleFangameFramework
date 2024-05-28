@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr0037yccoh76"]
+[gd_scene load_steps=14 format=3 uid="uid://dr0037yccoh76"]
 
 [ext_resource type="Script" path="res://Scripts/mainChara.cs" id="1_7i0xj"]
 [ext_resource type="Script" path="res://Scripts/CharaController.cs" id="2_terdc"]
-[ext_resource type="PackedScene" uid="uid://cuegac17kg4hs" path="res://Scenes/Prefabs/TextBox.tscn" id="2_ylm8p"]
 [ext_resource type="Texture2D" uid="uid://doysxl81gs35v" path="res://Sprites/spr_f_mainchara-sheet.png" id="3_7xe01"]
-[ext_resource type="PackedScene" uid="uid://cv1j7k6clf5r7" path="res://Scenes/Prefabs/TextBoxHigher.tscn" id="3_jug1w"]
 
 [sub_resource type="Animation" id="Animation_tire8"]
 resource_name = "idledown"
@@ -158,8 +156,6 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_7i0xj")
 Camera = NodePath("mainChara/Camera2D")
-SpeechBox = ExtResource("2_ylm8p")
-SpeechBoxHigher = ExtResource("3_jug1w")
 
 [node name="mainChara" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animPlayer", "Interaction", "MyScene", "MySceneScript")]
 y_sort_enabled = true

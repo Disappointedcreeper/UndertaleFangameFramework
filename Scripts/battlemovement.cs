@@ -6,17 +6,17 @@ using System.Runtime.CompilerServices;
 
 public partial class battlemovement : CharacterBody2D
 {
-	int ButtonPos = 0;
-	string behavior = "buttons";
+	int ButtonPos = 0;              //The button you are on (0 is fight, 1 is act, 2 is item, 3 is mercy)
+	string behavior = "buttons";    //The current behavior of the cursor
 	// Fight button pos: -134, 96
 	// Act button pos: -60, 96
 	// Item button pos: 23, 96
 	// Mercy button pos: 96, 96
-	public string[] Button = new string[4];
-	[Export] public Sprite2D[] ButtonSprites = new Sprite2D[4];
-	[Export] public AudioStreamPlayer2D SqueakSound;
-	[Export] public AudioStreamPlayer2D SelectSound;
-	public Dictionary<string, Godot.Vector2> MenuPos = new Dictionary<string, Godot.Vector2>();
+	public string[] Button = new string[4]; //String that holds the names of the buttons so you that using buttonpos you can get the name of the current button
+	[Export] public Sprite2D[] ButtonSprites = new Sprite2D[4]; //The sprites of the buttons (used to make them yellow when hovered over)
+	[Export] public AudioStreamPlayer2D SqueakSound;            //The object that makes the sound when you move between buttons
+	[Export] public AudioStreamPlayer2D SelectSound;            //The object that makes the sound when you select an option
+	public Dictionary<string, Godot.Vector2> MenuPos = new Dictionary<string, Godot.Vector2>();  //The positions where the soul is in the different "states" (the buttons, menu options, etc.)
 	public override void _Ready()
 	{
 		Button[0] = "Fight";
@@ -40,7 +40,7 @@ public partial class battlemovement : CharacterBody2D
 				SqueakSound.Play();
 				ButtonSprites[ButtonPos].Frame = 0;
 				ButtonPos++;
-				if(ButtonPos > 3)
+				if(ButtonPos > 3) //Loop around
 				{
 					ButtonPos = 0;
 				}
@@ -50,7 +50,7 @@ public partial class battlemovement : CharacterBody2D
 				SqueakSound.Play();
 				ButtonSprites[ButtonPos].Frame = 0;
 				ButtonPos--;
-				if(ButtonPos < 0)
+				if(ButtonPos < 0) //Loop around
 				{
 					ButtonPos = 3;
 				}

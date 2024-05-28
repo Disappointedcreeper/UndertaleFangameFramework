@@ -7,5 +7,7 @@
 [resource]
 script = ExtResource("3_252wq")
 dialogue = "* Stay on the path"
+anim = "noTalksprite"
+idleAnim = ""
 TextSound = ExtResource("2_hbkdx")
 Font = ExtResource("1_oxww6")

@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 public partial class mainChara : Node2D
 {
-	[Export] public Camera2D Camera;
-	[Export] public int CameraLimitLeft = -320;
-	[Export] public int CameraLimitTop = -240;
-	[Export] public int CameraLimitRight = 320;
-	[Export] public int CameraLimitBottom = 240;
-	[Export] public PackedScene SpeechBox;
-	// Called when the node enters the scene tree for the first time.
+	[Export] public Camera2D Camera;             //Reference to the camera node
+	[Export] public int CameraLimitLeft = -320;  //Sets the CameraLimit in the camera node
+	[Export] public int CameraLimitTop = -240;   //Sets the CameraLimit in the camera node
+	[Export] public int CameraLimitRight = 320;  //Sets the CameraLimit in the camera node
+	[Export] public int CameraLimitBottom = 240; //Sets the CameraLimit in the camera node
+	[Export] public PackedScene TextBox;       //Reference to the textbox scene
 	public override void _Ready()
 	{
 		Camera.LimitLeft = CameraLimitLeft;
@@ -34,7 +33,7 @@ public partial class mainChara : Node2D
 			if(Resource.Actions[i] is DialogueResource)
 			{
 				DialogueResource Dialoge = Resource.Actions[i] as DialogueResource;
-				await TextBox(Dialoge);
+				await CreateTextBox(Dialoge);
 			}
 			else if(Resource.Actions[i] is CutsceneAnimation)
 			{
@@ -54,46 +53,32 @@ public partial class mainChara : Node2D
 		GetNode("mainChara").Set("Enabled", true);
 		return;
 	}
-	public async Task TextBox(DialogueResource action)
+	public async Task CreateTextBox(DialogueResource action)
 	{
 		Node2D MainChara = (Node2D)GetNode("mainChara");
 		string TrueDialogue = action.dialogue.Replace("\\n", "\n");
 		Vector2 CameraTransform = Camera.GetViewportTransform().Y;
+		Node2D Object = (Node2D)TextBox.Instantiate();
 		if(MainChara.GlobalPosition.Y - CameraTransform.Y > 0)
 		{
-			GD.Print("test");
-			Node2D Object = (Node2D)SpeechBox.Instantiate();
 			Object.Translate(new Vector2(0, -311));
-	    	Object.Set("WhatToSay", TrueDialogue);
-        	Object.Set("FaceSprite", action.FaceSprite);
-			Object.Set("BodySprite", action.BodySprite);
-	    	Object.Set("FaceSprite2", action.FaceSprite2);
-    		Object.Set("TextSound", action.TextSound);
-        	Object.Set("Font", action.Font);
-	    	Object.Name = "SpeechBox";
-        	GetParent().AddChild(Object);
 		}
-		else
-		{
-			Node2D Object = (Node2D)SpeechBox.Instantiate();
-		    Object.Set("WhatToSay", TrueDialogue);
-    	    Object.Set("FaceSprite", action.FaceSprite);
-			Object.Set("BodySprite", action.BodySprite);
-	    	Object.Set("FaceSprite2", action.FaceSprite2);
-	    	Object.Set("TextSound", action.TextSound);
-    	    Object.Set("Font", action.Font);
-	    	Object.Name = "SpeechBox";
-        	GetParent().AddChild(Object);
-		}
+		Object.Set("WhatToSay", TrueDialogue);
+		Object.Set("anim", action.anim);
+		Object.Set("idleAnim", action.idleAnim);
+    	Object.Set("TextSound", action.TextSound);
+        Object.Set("Font", action.Font);
+	    Object.Name = "TextBox";
+    	GetParent().AddChild(Object);
         
-    	while (GetParent().GetNodeOrNull("SpeechBox") != null)
+    	while (GetParent().GetNodeOrNull("TextBox") != null)
     	{
         	await ToSignal(GetTree().CreateTimer(0.001), "timeout");
         }
 		return;
     }
 
-	public IEnumerator PlayAnimation(CutsceneAnimation action)
+	public IEnumerator PlayAnimation(CutsceneAnimation action) //Runs a CutsceneAnimation
 	{
 		AnimationPlayer AnimPlayer = (AnimationPlayer)GetNode("/root").GetNode(action.SceneName).GetNode(action.AnimPlayerPath);
 		AnimPlayer.Play(action.AnimationName);

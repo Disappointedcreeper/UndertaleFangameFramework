@@ -3,13 +3,11 @@ using System;
 
 public partial class TextHandler : Node2D
 {
-	int FaceSpriteChange = 2;
 	double MaxTimer = 0.1;
 	double CurrentTimer = 0;
-	[Export] public Texture2D FaceSprite;
-	public bool IsFaceSprite2 = false;
-	[Export] public Texture2D FaceSprite2;
-	[Export] public Texture2D BodySprite;
+	public string anim;
+	public string idleAnim;
+	[Export] public AnimationPlayer AnimPlayer;
 	[Export] public Sprite2D FaceSpriteDisplay;
 	[Export] public Sprite2D BodySpriteDisplay;
 	[Export] public AudioStream TextSound;
@@ -20,16 +18,20 @@ public partial class TextHandler : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		AnimPlayer.Play(anim);
 		TextDisplay.Text = WhatToSay;
 		TextSoundPlayer.Stream = TextSound;
 		TextDisplay.AddThemeFontOverride("normal_font", Font);
-		FaceSpriteDisplay.Texture = FaceSprite;
-		BodySpriteDisplay.Texture = BodySprite;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(TextDisplay.VisibleCharacters >= WhatToSay.Length - 1 && idleAnim != "")
+		{
+			AnimPlayer.Play(idleAnim);
+			idleAnim = "";
+		}
 		if (Input.IsActionJustPressed("z") && TextDisplay.VisibleCharacters >= WhatToSay.Length - 1)
 		{
 			QueueFree();
@@ -40,16 +42,6 @@ public partial class TextHandler : Node2D
 		}
 		if(CurrentTimer <= 0 && TextDisplay.VisibleCharacters <= WhatToSay.Length - 1)
 		{
-			if(FaceSpriteChange == 0)
-			{
-				FaceSpriteDisplay.Texture = FaceSprite;
-				if(!IsFaceSprite2 && FaceSprite2 != null)
-				{
-					FaceSpriteDisplay.Texture = FaceSprite2;
-				}
-				FaceSpriteChange = 3;
-				IsFaceSprite2 = !IsFaceSprite2;
-			}
 			
 			TextDisplay.VisibleCharacters++;
 			if(WhatToSay[TextDisplay.VisibleCharacters - 1] == '.' || WhatToSay[TextDisplay.VisibleCharacters - 1] == ',' || WhatToSay[TextDisplay.VisibleCharacters - 1] == '!' || WhatToSay[TextDisplay.VisibleCharacters - 1] == '?')
@@ -60,12 +52,7 @@ public partial class TextHandler : Node2D
 			{
 				TextSoundPlayer.Play();
 			}
-			FaceSpriteChange --;
 		}
 		CurrentTimer -= delta;
-		if(TextDisplay.VisibleCharacters >= WhatToSay.Length && FaceSprite2 != null)
-		{
-			FaceSpriteDisplay.Texture = FaceSprite2;
-		}
 	}
 }

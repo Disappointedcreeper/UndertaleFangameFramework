@@ -1,7 +1,5 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://b0c1bliobjvg4"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b0c1bliobjvg4"]
 
-[ext_resource type="Texture2D" uid="uid://c4cgr7dydg6cs" path="res://Sprites/Talksprites/spr_face_torielbody_0.png" id="1_ryrpk"]
-[ext_resource type="Texture2D" uid="uid://v5cohjb0bt2v" path="res://Sprites/Talksprites/torieltalklowquality.png" id="1_ucm8j"]
 [ext_resource type="FontFile" uid="uid://boyj45xnwdxrl" path="res://Fonts/DeterminationMono.ttf" id="2_esadl"]
 [ext_resource type="AudioStream" uid="uid://dy4r6uy1wkfe8" path="res://SFX/snd_txttor.wav" id="3_dfmpp"]
 [ext_resource type="Script" path="res://Scripts/Custom Resoruces/DialogueResource.cs" id="4_x2xv0"]
@@ -9,7 +7,7 @@
 [resource]
 script = ExtResource("4_x2xv0")
 dialogue = "* Hello my child."
-FaceSprite = ExtResource("1_ucm8j")
-BodySprite = ExtResource("1_ryrpk")
+anim = "toriel_lowqual"
+idleAnim = ""
 TextSound = ExtResource("3_dfmpp")
 Font = ExtResource("2_esadl")
